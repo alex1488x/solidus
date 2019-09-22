@@ -1,0 +1,2 @@
+debian/bin/solidusd usr/bin
+src/solidusd usr/lib/solidus

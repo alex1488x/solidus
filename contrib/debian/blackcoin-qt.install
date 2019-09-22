@@ -1,0 +1,5 @@
+solidus-qt usr/bin
+share/pixmaps/bitcoin32.xpm usr/share/pixmaps
+share/pixmaps/bitcoin80.xpm usr/share/pixmaps
+debian/solidus-qt.desktop usr/share/applications
+debian/solidus-qt.protocol usr/share/kde4/services/

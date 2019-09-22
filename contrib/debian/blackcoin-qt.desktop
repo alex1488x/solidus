@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=SOLIDUS
+Comment=SOLIDUS P2P Cryptocurrency
+Comment[fr]=SOLIDUS, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=SOLIDUS, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/solidus-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/bitcoin80.xpm
+MimeType=x-scheme-handler/solidus;
+Categories=Office;

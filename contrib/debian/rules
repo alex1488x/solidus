@@ -1,0 +1,33 @@
+#!/usr/bin/make -f
+# -*- mode: makefile; coding: utf-8 -*-
+
+#DEB_MAKE_CHECK_TARGET = test_bitcoin
+#build/bitcoind::
+#	$(if $(filter nocheck,$(DEB_BUILD_OPTIONS)),,src/test_bitcoin)
+
+DEB_INSTALL_EXAMPLES_solidusd += debian/examples/*
+DEB_INSTALL_MANPAGES_solidusd += debian/manpages/*
+
+%:
+	dh --with bash-completion $@
+
+override_dh_auto_build:
+	cd src; $(MAKE) -f makefile.unix solidusd
+	$(MAKE)
+
+override_dh_auto_clean:
+	if [ -f Makefile ]; then $(MAKE) clean; else rm -rf build/; rm -f solidus-qt; fi
+	cd src; $(MAKE) -f makefile.unix clean
+
+override_dh_auto_configure:
+	qmake solidus-qt.pro USE_QRCODE=1
+
+override_dh_auto_test:
+	cd src; $(MAKE) -f makefile.unix test_solidus
+	src/test_solidus
+
+# Ensure wrapper is set executable
+binary-post-install/solidusd:
+	chmod +x $(cdbs_curdestdir)usr/bin/solidusd
+binary-post-install/solidus-qt:
+	chmod +x $(cdbs_curdestdir)usr/bin/solidus-qt
